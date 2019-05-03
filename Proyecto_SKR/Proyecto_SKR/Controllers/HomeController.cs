@@ -12,7 +12,66 @@ namespace Proyecto_SKR.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            //[Almacenar la consulta SELECT en la List]
+            List<Requerimiento> modelo = new List<Requerimiento>();
+
+            SqlConnection con = new SqlConnection(@"Data Source=KABEC-PC\SQLEXPRESS; Initial Catalog=SolucionesKabec; User ID=sa; Password=qwerty123");
+            SqlCommand cmd = new SqlCommand(@"SELECT * FROM [Formulario] ORDER BY id_req DESC;", con);            
+            try
+            {
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    modelo.Add(new Requerimiento
+                    {
+                        id_req = dr.GetInt32(0),
+                        gerente_comercial = dr.GetString(1),
+                        motivo_req = dr.GetString(2),
+                        cliente_nom = dr.GetString(3),
+                        gerencia = dr.GetString(4),
+                        empresa_cliente = dr.GetString(5),
+                        email_cliente = dr.GetString(6),
+                        telefono_cliente = dr.GetString(7),
+                        perfil_solicitante = dr.GetString(8),
+                        carrera_solicitante = dr.GetString(9),
+                        nivel_estudios = dr.GetString(10),
+                        tiempo_experiencia = dr.GetString(11),
+                        catidad_recursos = dr.GetInt32(12),
+                        areas_carreras = dr.GetString(13),
+                        certificaciones = dr.GetString(14),
+                        prioridad_requerimiento = dr.GetString(15),
+                        fecha_sol_req = dr.GetDateTime(16),
+                        fecha_env_sol = dr.GetDateTime(17),
+                        fecha_cierre_req = dr.GetDateTime(18),
+                        rango_edad = dr.GetString(19),
+                        genero = dr.GetString(20),
+                        idiomas = dr.GetString(21),
+                        rango_tarifa = dr.GetString(22),
+                        rango_sueldo = dr.GetString(23),
+                        adicionales = dr.GetString(24),
+                        compu_trabajo = dr.GetString(25),
+                        compu_trabajo_fecha = dr.GetDateTime(26),
+                        redes_sociales = dr.GetString(27),
+                        redes_sociales_fecha = dr.GetDateTime(28),
+                        pagina_web = dr.GetString(29),
+                        pagina_web_fecha = dr.GetDateTime(30),
+                        occ_mundial = dr.GetString(31),
+                        occ_mundial_fecha = dr.GetDateTime(32)
+                    });
+                }
+                return View(modelo);
+
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public ActionResult About()
@@ -30,6 +89,7 @@ namespace Proyecto_SKR.Controllers
         } 
         public ActionResult Formulario()
         {
+            //[Donde se encuentra el formulario de Insert]
             return View();
         }
         public ActionResult GuardarRegistro(String gerente_comercial, String motivo_req, String cliente_nom, String gerencia, String empresa_cliente,
@@ -85,7 +145,8 @@ namespace Proyecto_SKR.Controllers
             {
                 con.Open();
                 cmd.ExecuteNonQuery();
-                return Content("Requerimiento Guardado !exito!");
+                //return Content("Requerimiento Guardado !exito!");
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
@@ -96,12 +157,14 @@ namespace Proyecto_SKR.Controllers
                 con.Close();
             }
         }
-
-        public ActionResult ConsultarRegistro()
+        public ActionResult ConsultarRegistroId(Int32 id_req)
         {
+            //[Almacenar la consulta SELECT en la List]
             List<Requerimiento> modelo = new List<Requerimiento>();
+
             SqlConnection con = new SqlConnection(@"Data Source=KABEC-PC\SQLEXPRESS; Initial Catalog=SolucionesKabec; User ID=sa; Password=qwerty123");
-            SqlCommand cmd = new SqlCommand(@"SELECT * FROM [Formulario];", con);
+            SqlCommand cmd = new SqlCommand(@"SELECT * FROM [Formulario]  WHERE id_req=@id_req;", con);
+            cmd.Parameters.Add(new SqlParameter("id_req", id_req));
             try
             {
                 con.Open();
@@ -133,11 +196,14 @@ namespace Proyecto_SKR.Controllers
                 con.Close();
             }
         }
-        public ActionResult BorrarRegistro(String gerente_comercial, String cliente_nom, String empresa_cliente, String perfil_solicitante)
+        public ActionResult ConsultarRegistro(String gerente_comercial, String cliente_nom, String empresa_cliente, String perfil_solicitante)
         {
+            //[Almacenar la consulta SELECT en la List]
+            List<Requerimiento> modelo = new List<Requerimiento>();
+
             SqlConnection con = new SqlConnection(@"Data Source=KABEC-PC\SQLEXPRESS; Initial Catalog=SolucionesKabec; User ID=sa; Password=qwerty123");
-            SqlCommand cmd = new SqlCommand(@"DELETE FROM [Formulario] WHERE gerente_comercial=@gerente_comercial AND cliente_nom=@cliente_nom
-                                            AND empresa_cliente=@empresa_cliente AND perfil_solicitante=@perfil_solicitante;", con);
+            SqlCommand cmd = new SqlCommand(@"SELECT * FROM [Formulario] WHERE gerente_comercial=@gerente_comercial OR
+                                            cliente_nom=@cliente_nom OR empresa_cliente=@empresa_cliente OR perfil_solicitante=@perfil_solicitante;", con);
             cmd.Parameters.Add(new SqlParameter("gerente_comercial", gerente_comercial));
             cmd.Parameters.Add(new SqlParameter("cliente_nom", cliente_nom));
             cmd.Parameters.Add(new SqlParameter("empresa_cliente", empresa_cliente));
@@ -145,8 +211,49 @@ namespace Proyecto_SKR.Controllers
             try
             {
                 con.Open();
-                cmd.ExecuteNonQuery();
-                return Content("Requerimiento Eliminado !exito!");
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    modelo.Add(new Requerimiento
+                    {
+                        id_req = dr.GetInt32(0),
+                        gerente_comercial = dr.GetString(1),
+                        motivo_req = dr.GetString(2),
+                        cliente_nom = dr.GetString(3),
+                        gerencia = dr.GetString(4),
+                        empresa_cliente = dr.GetString(5),
+                        email_cliente = dr.GetString(6),
+                        telefono_cliente = dr.GetString(7),
+                        perfil_solicitante = dr.GetString(8),
+                        carrera_solicitante = dr.GetString(9),
+                        nivel_estudios = dr.GetString(10),
+                        tiempo_experiencia = dr.GetString(11),
+                        catidad_recursos = dr.GetInt32(12),
+                        areas_carreras = dr.GetString(13),
+                        certificaciones = dr.GetString(14),
+                        prioridad_requerimiento = dr.GetString(15),
+                        fecha_sol_req = dr.GetDateTime(16),
+                        fecha_env_sol = dr.GetDateTime(17),
+                        fecha_cierre_req = dr.GetDateTime(18),
+                        rango_edad = dr.GetString(19),
+                        genero = dr.GetString(20),
+                        idiomas = dr.GetString(21),
+                        rango_tarifa = dr.GetString(22),
+                        rango_sueldo = dr.GetString(23),
+                        adicionales = dr.GetString(24),
+                        compu_trabajo = dr.GetString(25),
+                        compu_trabajo_fecha = dr.GetDateTime(26),
+                        redes_sociales = dr.GetString(27),
+                        redes_sociales_fecha = dr.GetDateTime(28),
+                        pagina_web = dr.GetString(29),
+                        pagina_web_fecha = dr.GetDateTime(30),
+                        occ_mundial = dr.GetString(31),
+                        occ_mundial_fecha = dr.GetDateTime(32)
+                    });
+                }
+                return View(modelo);
+
             }
             catch (Exception ex)
             {
@@ -166,7 +273,8 @@ namespace Proyecto_SKR.Controllers
             {
                 con.Open();
                 cmd.ExecuteNonQuery();
-                return Content("Requerimiento Eliminado !exito!");
+                //return Content("Requerimiento Eliminado !exito!");
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
@@ -177,19 +285,81 @@ namespace Proyecto_SKR.Controllers
                 con.Close();
             }
         }
-        public ActionResult ActualizarRegistro(String gerente_comercial, String cliente_nom, String empresa_cliente, String perfil_solicitante)
+        public ActionResult Actualizar(Int32 id_req)
         {
-            //Cuales van a ser los parametros a actualizar
-
+            //[Vista donde se encuentra el formulario para actualizar]
+            List<Requerimiento> modelo = new List<Requerimiento>();
             SqlConnection con = new SqlConnection(@"Data Source=KABEC-PC\SQLEXPRESS; Initial Catalog=SolucionesKabec; User ID=sa; Password=qwerty123");
-            SqlCommand cmd = new SqlCommand(@"UPDATE [Formulario] set Id_farmaco=@Id_farmaco, Nombre=@Nombre where Id_farmaco=@Id_farmaco;", con);
-            cmd.Parameters.Add(new SqlParameter("gerente_comercial", gerente_comercial));
-            cmd.Parameters.Add(new SqlParameter("cliente_nom", cliente_nom));
+            SqlCommand cmd = new SqlCommand(@"SELECT * FROM [Formulario] WHERE id_req=@id_req;", con);
+            cmd.Parameters.Add(new SqlParameter("id_req", id_req));
+            try
+            {
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    modelo.Add(new Requerimiento
+                    {
+                        id_req = dr.GetInt32(0),
+                        gerente_comercial = dr.GetString(1),
+                        motivo_req = dr.GetString(2),
+                        cliente_nom = dr.GetString(3),
+                        gerencia = dr.GetString(4),
+                        empresa_cliente = dr.GetString(5),
+                        email_cliente = dr.GetString(6),
+                        telefono_cliente = dr.GetString(7),
+                        perfil_solicitante = dr.GetString(8),
+                        carrera_solicitante = dr.GetString(9),
+                        nivel_estudios = dr.GetString(10),
+                        tiempo_experiencia = dr.GetString(11),
+                        catidad_recursos = dr.GetInt32(12),
+                        areas_carreras = dr.GetString(13),
+                        certificaciones = dr.GetString(14),
+                        prioridad_requerimiento = dr.GetString(15),
+                        fecha_sol_req = dr.GetDateTime(16),
+                        fecha_env_sol = dr.GetDateTime(17),
+                        fecha_cierre_req = dr.GetDateTime(18),
+                        rango_edad = dr.GetString(19),
+                        genero = dr.GetString(20),
+                        idiomas = dr.GetString(21),
+                        rango_tarifa = dr.GetString(22),
+                        rango_sueldo = dr.GetString(23),
+                        adicionales = dr.GetString(24),
+                        compu_trabajo = dr.GetString(25),
+                        compu_trabajo_fecha = dr.GetDateTime(26),
+                        redes_sociales = dr.GetString(27),
+                        redes_sociales_fecha = dr.GetDateTime(28),
+                        pagina_web = dr.GetString(29),
+                        pagina_web_fecha = dr.GetDateTime(30),
+                        occ_mundial = dr.GetString(31),
+                        occ_mundial_fecha = dr.GetDateTime(32)
+                    });
+                }
+                return View(modelo);
+
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public ActionResult ActualizarRegistro(Int32 id_req)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=KABEC-PC\SQLEXPRESS; Initial Catalog=SolucionesKabec; User ID=sa; Password=qwerty123");
+            SqlCommand cmd = new SqlCommand(@"UPDATE [Empleado] SET nombre=@nombre, pApellido=@pApellido, sApellid=@sApellid, telefono=@telefono, 
+                                            edad=@edad WHERE id_empleado=@id_empleado;", con);
+            cmd.Parameters.Add(new SqlParameter("id_req", id_req));
             try
             {
                 con.Open();
                 cmd.ExecuteNonQuery();
-                return Content("Requerimiento Actualizado !exito!");
+                //return Content("Requerimiento Actualizado !exito!");
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {

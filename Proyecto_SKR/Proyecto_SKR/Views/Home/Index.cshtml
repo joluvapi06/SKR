@@ -1,252 +1,146 @@
-﻿@{
+﻿@using Proyecto_SKR.Models;
+@model List<Requerimiento>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
-    <h1>Index</h1>    
+    <h1>Index</h1>
 </div>
+   
+<a href="~/Home/Formulario" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Insertar</a>        
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModalCenter">
+                Consultar
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Parametros de Consulta</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h5 class="modal-body">Busqueda por ID</h5>
+                            <form action="~/Home/ConsultarRegistroId" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" name="id_req" placeholder="Id Requerimiento" />
+                                    <button type="submit" class="btn btn-primary form-control">Consultar</button>
+                                </div>
+                            </form>
+                            <hr>
+                            <h5>Busqueda avanzada</h5>
+                            <form action="~/Home/ConsultarRegistro" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="gerente_comercial" placeholder="Gerente Comercial" />
+                                    <input type="text" class="form-control" name="cliente_nom" placeholder="Nombre Cliente" />
+                                    <input type="text" class="form-control" name="empresa_cliente" placeholder="Empresa Cliente" />
+                                    <input type="text" class="form-control" name="perfil_solicitante" placeholder="Perfil Solicitante" />
+                                    <button type="submit" class="btn btn-primary form-control">Consultar</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <a href="~/Home/ConsultarEmpleado" type="button" class="btn btn-primary disabled" aria-disabled="true">Consultar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>                 
 
-<div class="container-fluid">    
-    <a href="~/Home/Formulario" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Formulario</a>
-</div>
-
-<div class="container">
-    <div class="row">
-        <!--Datos del Req.-->
-        <div class="col-lg-4">
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-offset-2 control-label">Datos de Requerimiento</label>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">ID Requerimiento:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Gerente Comercial:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="Tipo_usuario" class="form-control" placeholder="Tipo Usuario" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Motivo Req.:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="E_mail" class="form-control" placeholder="E-mail" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Cliente:</label>
-                    <div class="col-lg-6">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Área o Gerencia:</label>
-                    <div class="col-lg-6">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Empresa Cliente:</label>
-                    <div class="col-lg-6">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Email Solicitante:</label>
-                    <div class="col-lg-6">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Tel. Solicitante:</label>
-                    <div class="col-lg-6">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!--Perfil-->
-        <div class="col-lg-4">
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Perfil</label>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Perfil Solicitado:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Carrera Solicitante:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="Tipo_usuario" class="form-control" placeholder="Tipo Usuario" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Nivel Estudios:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="E_mail" class="form-control" placeholder="E-mail" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Años Experiencia:</label>
-                    <div class="col-lg-6">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Cantidad Recursos:</label>
-                    <div class="col-lg-6">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Áreas Carreras:</label>
-                    <div class="col-lg-6">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Certificaciones:</label>
-                    <div class="col-lg-6">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Prioridad Req.:</label>
-                    <div class="col-lg-6">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!--Fecha Req.-->
-        <div class="col-lg-4">
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Fechas Requerimientos</label>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Fecha Solicitud:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Fecha Envio:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Fecha Cierre:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label"></label>
-                    <div class="col-lg-6">
-                        <label class="col-lg-6 control-label"></label>
-                    </div>
-                </div>
-            </form>
-            <hr />
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">General</label>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Rango de Edad:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Sexo:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Idiomas:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<hr />
-<div class="container">
-    <div class="row">
-        <!--Economia-->
-        <div class="col-lg-4">
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-offset-2 control-label">Economia</label>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Rango de Tarifa:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Rango de Sueldos:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="Tipo_usuario" class="form-control" placeholder="Tipo Usuario" />
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!--Adicionales-->
-        <div class="col-lg-4">
-            <div>
-                <div class="form-group">
-                    <label class="control-label">Adicionales</label>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="4"></textarea>
-                </div>
+<div class="row">
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="row table-responsive">
+                <table class="table table-responsive table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Id Requerimiento</th>
+                            <th scope="col">Gerente Comercial</th>
+                            <th scope="col">Motivo Requerimiento</th>
+                            <th scope="col">Cliente Nombre</th>
+                            <th scope="col">Gerencia</th>
+                            <th scope="col">Empresa Cliente</th>
+                            <th scope="col">Email Cliente</th>
+                            <th scope="col">Telefono Cliente</th>
+                            <th scope="col">Perfil Solicitante</th>
+                            <th scope="col">Carrera Solicitante</th>
+                            <th scope="col">Nivel de Estudios</th>
+                            <th scope="col">Años de Experiencia</th>
+                            <th scope="col">Cantidad Recursos</th>
+                            <th scope="col">Áreas Carrera</th>
+                            <th scope="col">Certificaciones</th>
+                            <th scope="col">Prioridad Req</th>
+                            <th scope="col">Fecha Sol Req</th>
+                            <th scope="col">Fecha Env Sol</th>
+                            <th scope="col">Fecha Cie Req</th>
+                            <th scope="col">Rango Edad</th>
+                            <th scope="col">Genero</th>
+                            <th scope="col">Idiomas</th>
+                            <th scope="col">Rango Tarifa</th>
+                            <th scope="col">Rango Sueldo</th>
+                            <th scope="col">Adicionales</th>
+                            <th scope="col">Compu Trabajo</th>
+                            <th scope="col">Fecha PCT</th>
+                            <th scope="col">Redes Sociales</th>
+                            <th scope="col">Fecha PRS</th>
+                            <th scope="col">Pagina Web</th>
+                            <th scope="col">Fecha PWeb</th>
+                            <th scope="col">OCC Mundial</th>
+                            <th scope="col">Fecha POccM</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var i in Model)
+                        {
+                        <tr>
+                            <td><a href="~/Home/BorrarRegistro?id_req=@i.id_req" class="btn btn-warning"><ins>Borrar</ins></a></td>
+                            <td>@i.id_req</td>
+                            <td>@i.gerente_comercial</td>
+                            <td>@i.motivo_req</td>
+                            <td>@i.cliente_nom</td>
+                            <td>@i.gerencia</td>
+                            <td>@i.empresa_cliente</td>
+                            <td>@i.email_cliente</td>
+                            <td>@i.telefono_cliente</td>
+                            <td>@i.perfil_solicitante</td>
+                            <td>@i.carrera_solicitante</td>
+                            <td>@i.nivel_estudios</td>
+                            <td>@i.tiempo_experiencia</td>
+                            <td>@i.catidad_recursos</td>
+                            <td>@i.areas_carreras</td>
+                            <td>@i.certificaciones</td>
+                            <td>@i.prioridad_requerimiento</td>
+                            <td>@i.fecha_sol_req</td>
+                            <td>@i.fecha_env_sol</td>
+                            <td>@i.fecha_cierre_req</td>
+                            <td>@i.rango_edad</td>
+                            <td>@i.genero</td>
+                            <td>@i.idiomas</td>
+                            <td>@i.rango_tarifa</td>
+                            <td>@i.rango_sueldo</td>
+                            <td>@i.adicionales</td>
+                            <td>@i.compu_trabajo</td>
+                            <td>@i.compu_trabajo_fecha</td>
+                            <td>@i.redes_sociales</td>
+                            <td>@i.redes_sociales_fecha</td>
+                            <td>@i.pagina_web</td>
+                            <td>@i.pagina_web_fecha</td>
+                            <td>@i.occ_mundial</td>
+                            <td>@i.occ_mundial_fecha</td>
+                            <td><a href="#" class="btn btn-success"><ins>Actualizar</ins></a></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
-        <!--Publicacion-->
-        <div class="col-lg-4">
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Publicacion</label>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Compu Trabajo:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Redes Sociales:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Paginas Web:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">OCC Mundial:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id" class="form-control" placeholder="Id" />
-                    </div>
-                </div>
-            </form>
-        </div>
     </div>
 </div>
+<!--<td><a href="~/Home/BorrarEmpleado?id_empleado=-arroba-i.id_empleado" class="btn btn-warning"><ins>Borrar</ins></a></td>-->

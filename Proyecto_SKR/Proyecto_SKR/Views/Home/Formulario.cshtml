@@ -3,218 +3,195 @@
     ViewBag.Title = "Formulario";
 }
 
-<h2>Formulario</h2>
+    <div class="jumbotron">
+        <h1>Registro de Requerimiento</h1>
+    </div>
 
-<div class="container">
-    <div class="row">
+<form class="form-horizontal" enctype="multipart/form-data" action="~/Home/GuardarRegistro" method="post">
+    <div class="form-row">
         <!--Datos del Req.-->
-        <div class="col-lg-4">
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-offset-2 control-label">Datos de Requerimiento</label>
+        <div class="form-group col-lg-4">
+            <div class="form-group">
+                <label class="col-lg-offset-2 control-label">Datos de Requerimiento</label>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">ID Requerimiento:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="id_req" class="form-control" placeholder="Automatico" readonly />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">ID Requerimiento:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="id_req" class="form-control" placeholder="Id requerimiento" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Gerente Comercial:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="gerente_comercial" class="form-control" placeholder="Lic. Nombre Apellidos" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Gerente Comercial:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="gerente_comercial" class="form-control" placeholder="Lic. Nombre Apellidos" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Motivo Req.:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="motivo_req" class="form-control" placeholder="Motivo del Requerimiento" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Motivo Req.:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="motivo_req" class="form-control" placeholder="Motivo del Requerimiento" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Cliente:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="cliente_nom" class="form-control" placeholder="Nombre del Cliente" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Cliente:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="cliente_nom" class="form-control" placeholder="Nombre del Cliente" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Área o Gerencia:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="gerencia" class="form-control" placeholder="Área o Gerencia" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Área o Gerencia:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="gerencia" class="form-control" placeholder="Área o Gerencia" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Empresa Cliente:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="empresa_cliente" class="form-control" placeholder="Empresa Cliente" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Empresa Cliente:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="empresa_cliente" class="form-control" placeholder="Empresa Cliente" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Email Cliente:</label>
+                <div class="col-lg-6">
+                    <input type="email" name="email_cliente" class="form-control" placeholder="email&#64gmail.com" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Email Cliente:</label>
-                    <div class="col-lg-6">
-                        <input type="email" name="email_cliente" class="form-control" placeholder="email&#64gmail.com" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Tel. Solicitante:</label>
+                <div class="col-lg-6">
+                    <input type="tel" name="telefono_cliente" class="form-control" placeholder="5511223344" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Tel. Solicitante:</label>
-                    <div class="col-lg-6">
-                        <input type="tel" name="telefono_cliente" class="form-control" placeholder="5511223344" />
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
         <!--Perfil-->
-        <div class="col-lg-4">
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Perfil</label>
+        <div class="form-group col-lg-4">
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Perfil</label>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Perfil Solicitado:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="perfil_solicitante" class="form-control" placeholder="Tester" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Perfil Solicitado:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="perfil_solicitante" class="form-control" placeholder="Tester" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Carrera Solicitante:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="carrera_solicitante" class="form-control" placeholder="Ingenieria en Sistemas" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Carrera Solicitante:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="carrera_solicitante" class="form-control" placeholder="Ingenieria en Sistemas" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Nivel Estudios:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="nivel_estudios" class="form-control" placeholder="Licenciatura" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Nivel Estudios:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="nivel_estudios" class="form-control" placeholder="Licenciatura" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Años Experiencia:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="tiempo_experiencia" class="form-control" placeholder="1 o mas" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Años Experiencia:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="tiempo_experiencia" class="form-control" placeholder="1 o mas" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Cantidad Recursos:</label>
+                <div class="col-lg-6">
+                    <input type="number" name="catidad_recursos" class="form-control" placeholder="1" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Cantidad Recursos:</label>
-                    <div class="col-lg-6">
-                        <input type="number" name="catidad_recursos" class="form-control" placeholder="1" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Áreas Carreras:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="areas_carreras" class="form-control" placeholder="Áreas Carreras" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Áreas Carreras:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="areas_carreras" class="form-control" placeholder="Áreas Carreras" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Certificaciones:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="certificaciones" class="form-control" placeholder="ISTQB" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Certificaciones:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="certificaciones" class="form-control" placeholder="ISTQB" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Prioridad Req:</label>
+                <div class="col-lg-6">
+                    <select class="form-control" id="prioridad_requerimiento" name="prioridad_requerimiento">
+                        <option value="Bajo">Bajo</option>
+                        <option value="Medio">Medio</option>
+                        <option value="Alto">Alto</option>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Prioridad Req.:</label>
-                    <div class="col-lg-6">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="prioridad_requerimiento" value="B">
-                            <label class="form-check-label" for="inlineRadio1">Bajo</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="prioridad_requerimiento" value="M">
-                            <label class="form-check-label" for="inlineRadio1">Medio</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="prioridad_requerimiento" value="A">
-                            <label class="form-check-label" for="inlineRadio1">Alto</label>
-                        </div>                        
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
         <!--Fecha Req.-->
-        <div class="col-lg-4">
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Fechas Requerimientos</label>
+        <div class="form-group col-lg-4">
+            <div class="form-group">
+                <label class="col-lg-8 control-label">Fechas Requerimientos</label>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-5 control-label">Fecha Solicitud:</label>
+                <div class="col-lg-7">
+                    <input type="date" name="fecha_sol_req" class="form-control" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Fecha Solicitud:</label>
-                    <div class="col-lg-6">
-                        <input type="date" name="fecha_sol_req" class="form-control" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-5 control-label">Fecha Envio:</label>
+                <div class="col-lg-7">
+                    <input type="date" name="fecha_env_sol" class="form-control" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Fecha Envio:</label>
-                    <div class="col-lg-6">
-                        <input type="date" name="fecha_env_sol" class="form-control" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-5 control-label">Fecha Cierre:</label>
+                <div class="col-lg-7">
+                    <input type="date" name="fecha_cierre_req" class="form-control" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Fecha Cierre:</label>
-                    <div class="col-lg-6">
-                        <input type="date" name="fecha_cierre_req" class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label"></label>
-                    <div class="col-lg-6">
-                        <label class="col-lg-6 control-label"></label>
-                    </div>
-                </div>
-            </form>
+            </div>
             <hr />
             <!--General-->
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">General</label>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">General</label>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Rango de Edad:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="rango_edad" class="form-control" placeholder="23-30 años" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Rango de Edad:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="rango_edad" class="form-control" placeholder="23-30 años" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Genero:</label>
+                <div class="col-lg-6">
+                    <select class="form-control" id="genero" name="genero">
+                        <option value="Indistinto">Indistinto</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Genero:</label>
-                    <div class="col-lg-6">                                                
-                        <select class="form-control" id="genero">
-                            <option value="I">Indistinto</option>
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>                                                        
-                        </select>
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Idiomas:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="idiomas" class="form-control" placeholder="Ingles" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Idiomas:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="idiomas" class="form-control" placeholder="Ingles" />
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
-<hr />
-<div class="container">
-    <div class="row">
+
+    <div class="form-row">
         <!--Economia-->
         <div class="col-lg-4">
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-offset-2 control-label">Economia</label>
+            <div class="form-group">
+                <label class="col-lg-offset-2 control-label">Economia</label>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Rango de Tarifa:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="rango_tarifa" class="form-control" placeholder="$10,000-$15,000" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Rango de Tarifa:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="rango_tarifa" class="form-control" placeholder="10,000-15,000" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Rango de Sueldos:</label>
+                <div class="col-lg-6">
+                    <input type="text" name="rango_sueldo" class="form-control" placeholder="$10,000-$15,000" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Rango de Sueldos:</label>
-                    <div class="col-lg-6">
-                        <input type="text" name="rango_sueldo" class="form-control" placeholder="10,000-15,000" />
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
         <!--Adicionales-->
         <div class="col-lg-4">
@@ -223,101 +200,85 @@
                     <label class="control-label">Adicionales</label>
                 </div>
                 <div class="form-group">
-                    <textarea id="adicionales" class="form-control" rows="4"></textarea>
+                    <textarea id="adicionales" name="adicionales" class="form-control" rows="6"></textarea>
                 </div>
             </div>
         </div>
         <!--Publicacion-->
         <div class="col-lg-4">
-            <form class="form-horizontal" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label class="col-lg-6 control-label">Publicacion</label>
+            <div class="form-group">
+                <label class="col-lg-6 control-label">Publicacion</label>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-5 control-label">Compu Trabajo:</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="compu_trabajo" id="compu_trabajo" value="SI">
+                    <label class="form-check-label" for="inlineRadio1">SI</label>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Compu Trabajo:</label>
-                    <div class="col-lg-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ex1" id="compu_trabajo" value="1">
-                            <label class="form-check-label" for="ex1">
-                                SI
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="ex1" id="compu_trabajo" value="0">
-                            <label class="form-check-label" for="ex2">
-                                NO
-                            </label>
-                        </div>
-                    </div>
-                    <label class="col-lg-2 control-label">Fecha:</label>
-                    <div class="col-lg-4">
-                        <input type="date" name="compu_trabajo_fecha" class="form-control" />
-                    </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="compu_trabajo" id="compu_trabajo" value="NO">
+                    <label class="form-check-label" for="inlineRadio2">NO</label>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Redes Sociales:</label>
-                    <div class="col-lg-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exa1" id="redes_sociales" value="1">
-                            <label class="form-check-label" for="exa1">
-                                SI
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exa1" id="redes_sociales" value="0">
-                            <label class="form-check-label" for="exa2">
-                                NO
-                            </label>
-                        </div>                        
-                    </div>                    
-                    <label class="col-lg-2 control-label">Fecha:</label>
-                    <div class="col-lg-4">
-                        <input type="date" name="redes_sociales_fecha" class="form-control" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-7 control-label">Fecha Publicacion CT:</label>
+                <div class="col-lg-7">
+                    <input type="date" name="compu_trabajo_fecha" class="form-control" />
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">Pagina Web:</label>
-                    <div class="col-lg-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="pagina_web" value="1">
-                            <label class="form-check-label" for="exampleRadios1">
-                                SI
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="pagina_web" value="0">
-                            <label class="form-check-label" for="exampleRadios2">
-                                NO
-                            </label>
-                        </div>
-                    </div>
-                    <label class="col-lg-2 control-label">Fecha:</label>
-                    <div class="col-lg-4">
-                        <input type="date" name="pagina_web_fecha" class="form-control" />
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-5 control-label">Redes Socilaes:</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="redes_sociales" id="redes_sociales" value="SI">
+                    <label class="form-check-label" for="inlineRadio1">SI</label>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-3 control-label">OCC Mundial:</label>
-                    <div class="col-lg-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="example" id="occ_mundial" value="1">
-                            <label class="form-check-label" for="example1">
-                                SI
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="example" id="occ_mundial" value="0">
-                            <label class="form-check-label" for="example2">
-                                NO
-                            </label>
-                        </div>                        
-                    </div>
-                    <label class="col-lg-2 control-label">Fecha:</label>
-                    <div class="col-lg-4">
-                        <input type="date" name="occ_mundial_fecha" class="form-control" />
-                    </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="redes_sociales" id="redes_sociales" value="NO">
+                    <label class="form-check-label" for="inlineRadio2">NO</label>
                 </div>
-            </form>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-7 control-label">Fecha Publicacion RS:</label>
+                <div class="col-lg-7">
+                    <input type="date" name="redes_sociales_fecha" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-5 control-label">Pagina WEB:</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pagina_web" id="pagina_web" value="SI">
+                    <label class="form-check-label" for="inlineRadio1">SI</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pagina_web" id="pagina_web" value="NO">
+                    <label class="form-check-label" for="inlineRadio2">NO</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-7 control-label">Fecha Publicacion PWeb:</label>
+                <div class="col-lg-7">
+                    <input type="date" name="pagina_web_fecha" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-5 control-label">OCC Mundial:</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="occ_mundial" id="occ_mundial" value="SI">
+                    <label class="form-check-label" for="inlineRadio1">SI</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="occ_mundial" id="occ_mundial" value="NO">
+                    <label class="form-check-label" for="inlineRadio2">NO</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-7 control-label">Fecha Publicacion OCC:</label>
+                <div class="col-lg-7">
+                    <input type="date" name="occ_mundial_fecha" class="form-control" />
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <button type="submit" class="btn btn-primary form-control">Guardar</button>
+    <a href="~/Home/Index" class="btn btn-danger form-control"><ins>Cancelar</ins></a>
+</form>
