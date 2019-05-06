@@ -100,7 +100,7 @@
                         @foreach (var i in Model)
                         {
                         <tr>
-                            <td><a href="~/Home/BorrarRegistro?id_req=@i.id_req" class="btn btn-warning"><ins>Borrar</ins></a></td>
+                            <td><a href="~/Home/BorrarRegistro?id_req=@i.id_req" class="btn btn-danger"><ins>Borrar</ins></a></td>
                             <td>@i.id_req</td>
                             <td>@i.gerente_comercial</td>
                             <td>@i.motivo_req</td>
@@ -134,7 +134,7 @@
                             <td>@i.pagina_web_fecha</td>
                             <td>@i.occ_mundial</td>
                             <td>@i.occ_mundial_fecha</td>
-                            <td><a href="#" class="btn btn-success"><ins>Actualizar</ins></a></td>
+                            <td><a href="~/Home/Actualizar?id_empleado=@i.id_req" class="btn btn-warning"><ins>Actualizar</ins></a></td>
                         </tr>
                         }
                     </tbody>

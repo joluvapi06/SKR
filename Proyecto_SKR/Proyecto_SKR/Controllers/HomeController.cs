@@ -10,13 +10,22 @@ namespace Proyecto_SKR.Controllers
 {
     public class HomeController : Controller
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public ActionResult Index()
         {
+            log.Info("Ingresaste al Index");
             //[Almacenar la consulta SELECT en la List]
             List<Requerimiento> modelo = new List<Requerimiento>();
 
             SqlConnection con = new SqlConnection(@"Data Source=KABEC-PC\SQLEXPRESS; Initial Catalog=SolucionesKabec; User ID=sa; Password=qwerty123");
-            SqlCommand cmd = new SqlCommand(@"SELECT * FROM [Formulario] ORDER BY id_req DESC;", con);            
+            SqlCommand cmd = new SqlCommand(@"SELECT TOP 10 id_req, DBO.CleanString(DBO.UpperString(gerente_comercial)), DBO.CleanString(DBO.UpperString(motivo_req)), DBO.CleanString(DBO.UpperString(cliente_nom)),
+                    DBO.CleanString(DBO.UpperString(gerencia)), DBO.CleanString(DBO.UpperString(empresa_cliente)), email_cliente, telefono_cliente, DBO.CleanString(DBO.UpperString(perfil_solicitante)),
+                    DBO.CleanString(DBO.UpperString(carrera_solicitante)), DBO.CleanString(DBO.UpperString(nivel_estudios)), DBO.CleanString(DBO.UpperString(tiempo_experiencia)),
+                    catidad_recursos, DBO.CleanString(DBO.UpperString(areas_carreras)), DBO.CleanString(DBO.UpperString(certificaciones)), prioridad_requerimiento,fecha_sol_req,
+                    fecha_env_sol,fecha_cierre_req, DBO.CleanString(DBO.UpperString(rango_edad)), genero, DBO.CleanString(DBO.UpperString(idiomas)), rango_tarifa, rango_sueldo,
+                    DBO.CleanString(DBO.UpperString(adicionales)), compu_trabajo, compu_trabajo_fecha, redes_sociales, redes_sociales_fecha, pagina_web, pagina_web_fecha,
+                    occ_mundial, occ_mundial_fecha
+                    FROM [Formulario] ORDER BY id_req DESC;", con);            
             try
             {
                 con.Open();
@@ -89,6 +98,7 @@ namespace Proyecto_SKR.Controllers
         } 
         public ActionResult Formulario()
         {
+            log.Info("Ingreso al formulario");
             //[Donde se encuentra el formulario de Insert]
             return View();
         }
@@ -141,6 +151,39 @@ namespace Proyecto_SKR.Controllers
             cmd.Parameters.Add(new SqlParameter("pagina_web_fecha", pagina_web_fecha));
             cmd.Parameters.Add(new SqlParameter("occ_mundial", occ_mundial));
             cmd.Parameters.Add(new SqlParameter("occ_mundial_fecha", occ_mundial_fecha));
+            //Logs del Insert
+            log.Info("Id:"+gerente_comercial);
+            log.Info("Motivo:"+motivo_req);
+            log.Info("Cliente:"+cliente_nom);
+            log.Info("GC:"+gerencia);
+            log.Info("Empresa:"+empresa_cliente);
+            log.Info("Email:"+email_cliente);
+            log.Info("Tel:"+telefono_cliente);
+            log.Info("Perfil:"+perfil_solicitante);
+            log.Info("Carrera:"+carrera_solicitante);
+            log.Info("Nivel:"+nivel_estudios);
+            log.Info("Tiempo:"+tiempo_experiencia);
+            log.Info("#:"+catidad_recursos);
+            log.Info("Arreas:"+areas_carreras);
+            log.Info("Certificaciones:"+certificaciones);
+            log.Info("Prioridad:"+prioridad_requerimiento);
+            log.Info("FSol:"+fecha_sol_req);
+            log.Info("FEnvi:"+fecha_env_sol);
+            log.Info("FCierr:"+fecha_cierre_req);
+            log.Info("RE:"+rango_edad);
+            log.Info("Genero:"+genero);
+            log.Info("Idiomas:"+idiomas);
+            log.Info("RT:"+rango_tarifa);
+            log.Info("RS:"+rango_sueldo);
+            log.Info("Adi:"+adicionales);
+            log.Info("CT:"+compu_trabajo);
+            log.Info("CTF:"+compu_trabajo_fecha);
+            log.Info("SN:"+redes_sociales);
+            log.Info("SNF:"+redes_sociales_fecha);
+            log.Info("PW:"+pagina_web);
+            log.Info("PWF:"+pagina_web_fecha);
+            log.Info("OCC:"+occ_mundial);
+            log.Info("OCCF:"+occ_mundial_fecha);
             try
             {
                 con.Open();
@@ -161,10 +204,18 @@ namespace Proyecto_SKR.Controllers
         {
             //[Almacenar la consulta SELECT en la List]
             List<Requerimiento> modelo = new List<Requerimiento>();
-
+            log.Info("Ingreso a Consulta por ID.");
             SqlConnection con = new SqlConnection(@"Data Source=KABEC-PC\SQLEXPRESS; Initial Catalog=SolucionesKabec; User ID=sa; Password=qwerty123");
-            SqlCommand cmd = new SqlCommand(@"SELECT * FROM [Formulario]  WHERE id_req=@id_req;", con);
+            SqlCommand cmd = new SqlCommand(@"SELECT TOP 10 id_req, DBO.CleanString(DBO.UpperString(gerente_comercial)), DBO.CleanString(DBO.UpperString(motivo_req)), DBO.CleanString(DBO.UpperString(cliente_nom)),
+                    DBO.CleanString(DBO.UpperString(gerencia)), DBO.CleanString(DBO.UpperString(empresa_cliente)), email_cliente, telefono_cliente, DBO.CleanString(DBO.UpperString(perfil_solicitante)),
+                    DBO.CleanString(DBO.UpperString(carrera_solicitante)), DBO.CleanString(DBO.UpperString(nivel_estudios)), DBO.CleanString(DBO.UpperString(tiempo_experiencia)),
+                    catidad_recursos, DBO.CleanString(DBO.UpperString(areas_carreras)), DBO.CleanString(DBO.UpperString(certificaciones)), prioridad_requerimiento,fecha_sol_req,
+                    fecha_env_sol,fecha_cierre_req, DBO.CleanString(DBO.UpperString(rango_edad)), genero, DBO.CleanString(DBO.UpperString(idiomas)), rango_tarifa, rango_sueldo,
+                    DBO.CleanString(DBO.UpperString(adicionales)), compu_trabajo, compu_trabajo_fecha, redes_sociales, redes_sociales_fecha, pagina_web, pagina_web_fecha,
+                    occ_mundial, occ_mundial_fecha
+                    FROM [Formulario]  WHERE id_req=@id_req;", con);
             cmd.Parameters.Add(new SqlParameter("id_req", id_req));
+            log.Info("ID consultado:"+id_req);
             try
             {
                 con.Open();
@@ -200,14 +251,18 @@ namespace Proyecto_SKR.Controllers
         {
             //[Almacenar la consulta SELECT en la List]
             List<Requerimiento> modelo = new List<Requerimiento>();
-
+            log.Info("Conslta Avanzada."); 
             SqlConnection con = new SqlConnection(@"Data Source=KABEC-PC\SQLEXPRESS; Initial Catalog=SolucionesKabec; User ID=sa; Password=qwerty123");
-            SqlCommand cmd = new SqlCommand(@"SELECT * FROM [Formulario] WHERE gerente_comercial=@gerente_comercial OR
-                                            cliente_nom=@cliente_nom OR empresa_cliente=@empresa_cliente OR perfil_solicitante=@perfil_solicitante;", con);
+            string SQL = "SELECT id_req, DBO.CleanString(DBO.UpperString(gerente_comercial)), DBO.CleanString(DBO.UpperString(motivo_req)), DBO.CleanString(DBO.UpperString(cliente_nom)),DBO.CleanString(DBO.UpperString(gerencia)), DBO.CleanString(DBO.UpperString(empresa_cliente)), email_cliente, telefono_cliente, DBO.CleanString(DBO.UpperString(perfil_solicitante)),DBO.CleanString(DBO.UpperString(carrera_solicitante)),DBO.CleanString(DBO.UpperString(nivel_estudios)), DBO.CleanString(DBO.UpperString(tiempo_experiencia)),catidad_recursos, DBO.CleanString(DBO.UpperString(areas_carreras)), DBO.CleanString(DBO.UpperString(certificaciones)), prioridad_requerimiento,fecha_sol_req,fecha_env_sol,fecha_cierre_req, DBO.CleanString(DBO.UpperString(rango_edad)), genero, DBO.CleanString(DBO.UpperString(idiomas)), rango_tarifa, rango_sueldo,DBO.CleanString(DBO.UpperString(adicionales)), compu_trabajo, compu_trabajo_fecha, redes_sociales,redes_sociales_fecha, pagina_web, pagina_web_fecha,occ_mundial, occ_mundial_fecha FROM DBO.Formulario WHERE gerente_comercial LIKE '%"+gerente_comercial+"%' AND cliente_nom LIKE '%"+cliente_nom+"%' AND empresa_cliente LIKE '%"+empresa_cliente+"%' AND perfil_solicitante LIKE '%"+perfil_solicitante+"&';";
+            SqlCommand cmd = new SqlCommand(SQL, con);
             cmd.Parameters.Add(new SqlParameter("gerente_comercial", gerente_comercial));
             cmd.Parameters.Add(new SqlParameter("cliente_nom", cliente_nom));
             cmd.Parameters.Add(new SqlParameter("empresa_cliente", empresa_cliente));
             cmd.Parameters.Add(new SqlParameter("perfil_solicitante", perfil_solicitante));
+            log.Info("Id:" + gerente_comercial);
+            log.Info("Cliente:" + cliente_nom);
+            log.Info("Empresa:" + empresa_cliente);
+            log.Info("Perfil:" + perfil_solicitante);
             try
             {
                 con.Open();
@@ -269,6 +324,7 @@ namespace Proyecto_SKR.Controllers
             SqlConnection con = new SqlConnection(@"Data Source=KABEC-PC\SQLEXPRESS; Initial Catalog=SolucionesKabec; User ID=sa; Password=qwerty123");
             SqlCommand cmd = new SqlCommand(@"DELETE FROM [Formulario] WHERE id_req=@id_req;", con);
             cmd.Parameters.Add(new SqlParameter("id_req", id_req));
+            log.Info("Borraste un Empleado con ID:" + id_req);
             try
             {
                 con.Open();
@@ -292,6 +348,7 @@ namespace Proyecto_SKR.Controllers
             SqlConnection con = new SqlConnection(@"Data Source=KABEC-PC\SQLEXPRESS; Initial Catalog=SolucionesKabec; User ID=sa; Password=qwerty123");
             SqlCommand cmd = new SqlCommand(@"SELECT * FROM [Formulario] WHERE id_req=@id_req;", con);
             cmd.Parameters.Add(new SqlParameter("id_req", id_req));
+            log.Info("Busqueda del Empleado con Id:" + id_req + " para actualizarlo");
             try
             {
                 con.Open();
