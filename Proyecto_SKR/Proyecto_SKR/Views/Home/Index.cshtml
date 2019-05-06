@@ -8,49 +8,54 @@
 <div class="jumbotron">
     <h1>Index</h1>
 </div>
-   
-<a href="~/Home/Formulario" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Insertar</a>        
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModalCenter">
-                Consultar
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Parametros de Consulta</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <h5 class="modal-body">Busqueda por ID</h5>
-                            <form action="~/Home/ConsultarRegistroId" method="post" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <input type="number" class="form-control" name="id_req" placeholder="Id Requerimiento" />
-                                    <button type="submit" class="btn btn-primary form-control">Consultar</button>
-                                </div>
-                            </form>
-                            <hr>
-                            <h5>Busqueda avanzada</h5>
-                            <form action="~/Home/ConsultarRegistro" method="post" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="gerente_comercial" placeholder="Gerente Comercial" />
-                                    <input type="text" class="form-control" name="cliente_nom" placeholder="Nombre Cliente" />
-                                    <input type="text" class="form-control" name="empresa_cliente" placeholder="Empresa Cliente" />
-                                    <input type="text" class="form-control" name="perfil_solicitante" placeholder="Perfil Solicitante" />
-                                    <button type="submit" class="btn btn-primary form-control">Consultar</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <a href="~/Home/ConsultarEmpleado" type="button" class="btn btn-primary disabled" aria-disabled="true">Consultar</a>
-                        </div>
+
+<div class="alert alert-success">
+    <button class="close" data-dismiss="alert"><span>&times;</span></button>
+    Bienvenido!
+</div>
+
+<a href="~/Home/Formulario" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Insertar</a>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModalCenter">
+    Consultar
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Parametros de Consulta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="modal-body">Busqueda por ID</h5>
+                <form action="~/Home/ConsultarRegistroId" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="number" min="1" class="form-control" name="id_req" placeholder="Id Requerimiento" />
+                        <button type="submit" class="btn btn-primary form-control">Consultar</button>
                     </div>
-                </div>
-            </div>                 
+                </form>
+                <hr>
+                <h5>Busqueda avanzada</h5>
+                <form action="~/Home/ConsultarRegistro" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="gerente_comercial" placeholder="Gerente Comercial" />
+                        <input type="text" class="form-control" name="cliente_nom" placeholder="Nombre Cliente" />
+                        <input type="text" class="form-control" name="empresa_cliente" placeholder="Empresa Cliente" />
+                        <input type="text" class="form-control" name="perfil_solicitante" placeholder="Perfil Solicitante" />
+                        <button type="submit" class="btn btn-primary form-control">Consultar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <a href="~/Home/ConsultarEmpleado" type="button" class="btn btn-primary disabled" aria-disabled="true">Consultar</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="container-fluid">
@@ -134,7 +139,7 @@
                             <td>@i.pagina_web_fecha</td>
                             <td>@i.occ_mundial</td>
                             <td>@i.occ_mundial_fecha</td>
-                            <td><a href="~/Home/Actualizar?id_empleado=@i.id_req" class="btn btn-warning"><ins>Actualizar</ins></a></td>
+                            <td><a href="~/Home/Actualizar?id_req=@i.id_req" class="btn btn-warning"><ins>Actualizar</ins></a></td>                            
                         </tr>
                         }
                     </tbody>

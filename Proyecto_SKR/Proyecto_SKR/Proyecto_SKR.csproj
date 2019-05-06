@@ -210,6 +210,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\ConsultarRegistroId.cshtml" />
     <Content Include="Views\Home\ConsultarRegistro.cshtml" />
+    <Content Include="Views\Home\Actualizar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

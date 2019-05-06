@@ -56,43 +56,43 @@
                     <tbody>
                         @foreach (var i in Model)
                         {
-                            <tr>
-                                <td><a href="~/Home/BorrarRegistro?id_req=@i.id_req" class="btn btn-danger"><ins>Borrar</ins></a></td>
-                                <td>@i.id_req</td>
-                                <td>@i.gerente_comercial</td>
-                                <td>@i.motivo_req</td>
-                                <td>@i.cliente_nom</td>
-                                <td>@i.gerencia</td>
-                                <td>@i.empresa_cliente</td>
-                                <td>@i.email_cliente</td>
-                                <td>@i.telefono_cliente</td>
-                                <td>@i.perfil_solicitante</td>
-                                <td>@i.carrera_solicitante</td>
-                                <td>@i.nivel_estudios</td>
-                                <td>@i.tiempo_experiencia</td>
-                                <td>@i.catidad_recursos</td>
-                                <td>@i.areas_carreras</td>
-                                <td>@i.certificaciones</td>
-                                <td>@i.prioridad_requerimiento</td>
-                                <td>@i.fecha_sol_req</td>
-                                <td>@i.fecha_env_sol</td>
-                                <td>@i.fecha_cierre_req</td>
-                                <td>@i.rango_edad</td>
-                                <td>@i.genero</td>
-                                <td>@i.idiomas</td>
-                                <td>@i.rango_tarifa</td>
-                                <td>@i.rango_sueldo</td>
-                                <td>@i.adicionales</td>
-                                <td>@i.compu_trabajo</td>
-                                <td>@i.compu_trabajo_fecha</td>
-                                <td>@i.redes_sociales</td>
-                                <td>@i.redes_sociales_fecha</td>
-                                <td>@i.pagina_web</td>
-                                <td>@i.pagina_web_fecha</td>
-                                <td>@i.occ_mundial</td>
-                                <td>@i.occ_mundial_fecha</td>
-                                <td><a href="~/Home/Actualizar?id_empleado=@i.id_req" class="btn btn-warning"><ins>Actualizar</ins></a></td>
-                            </tr>
+                        <tr>
+                            <td><a href="~/Home/BorrarRegistro?id_req=@i.id_req" class="btn btn-danger"><ins>Borrar</ins></a></td>
+                            <td>@i.id_req</td>
+                            <td>@i.gerente_comercial</td>
+                            <td>@i.motivo_req</td>
+                            <td>@i.cliente_nom</td>
+                            <td>@i.gerencia</td>
+                            <td>@i.empresa_cliente</td>
+                            <td>@i.email_cliente</td>
+                            <td>@i.telefono_cliente</td>
+                            <td>@i.perfil_solicitante</td>
+                            <td>@i.carrera_solicitante</td>
+                            <td>@i.nivel_estudios</td>
+                            <td>@i.tiempo_experiencia</td>
+                            <td>@i.catidad_recursos</td>
+                            <td>@i.areas_carreras</td>
+                            <td>@i.certificaciones</td>
+                            <td>@i.prioridad_requerimiento</td>
+                            <td>@i.fecha_sol_req</td>
+                            <td>@i.fecha_env_sol</td>
+                            <td>@i.fecha_cierre_req</td>
+                            <td>@i.rango_edad</td>
+                            <td>@i.genero</td>
+                            <td>@i.idiomas</td>
+                            <td>@i.rango_tarifa</td>
+                            <td>@i.rango_sueldo</td>
+                            <td>@i.adicionales</td>
+                            <td>@i.compu_trabajo</td>
+                            <td>@i.compu_trabajo_fecha</td>
+                            <td>@i.redes_sociales</td>
+                            <td>@i.redes_sociales_fecha</td>
+                            <td>@i.pagina_web</td>
+                            <td>@i.pagina_web_fecha</td>
+                            <td>@i.occ_mundial</td>
+                            <td>@i.occ_mundial_fecha</td>                            
+                            <td><a href="~/Home/Actualizar?id_req=@i.id_req" class="btn btn-warning"><ins>Actualizar</ins></a></td>
+                        </tr>
                         }
                     </tbody>
                 </table>

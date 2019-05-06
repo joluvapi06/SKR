@@ -1,0 +1,297 @@
+﻿@using Proyecto_SKR.Models;
+@model List<Requerimiento>
+
+@{
+    ViewBag.Title = "Actualizar";
+}
+
+<div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Actualizar</h1>
+        </div>
+</div>
+
+<div class="alert alert-warning">
+    <button class="close" data-dismiss="alert"><span>&times;</span></button>
+    ¡Recuerda llenar todos los campos!
+</div>
+
+        @foreach (var i in Model)
+        {
+            <form class="form-horizontal" enctype="multipart/form-data" action="~/Home/ActualizarRegistro?id_req=@i.id_req" method="post">
+                <div class="form-row">
+                    <!--Datos del Req.-->
+                    <div class="form-group col-lg-4">
+                        <div class="form-group">
+                            <label class="col-lg-offset-2 control-label">Datos de Requerimiento</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">ID Requerimiento:</label>
+                            <div class="col-lg-9">                                
+                                <label class="form-control control-label disabled" name="id_req">@i.id_req</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Gerente Comercial:</label>
+                            <div class="col-lg-9">
+                                <!--<input type="text" name="gerente_comercial" class="form-control" value="i.gerente_comercial" />-->
+                                <label class="form-control control-label disabled">@i.gerente_comercial</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Motivo Requerimiento:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="motivo_req" class="form-control" value="@i.motivo_req" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Nombre Cliente:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="cliente_nom" class="form-control" value="@i.cliente_nom" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-9 control-label">Área o Gerencia:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="gerencia" class="form-control" value="@i.gerencia" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Empresa Cliente:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="empresa_cliente" class="form-control" value="@i.empresa_cliente" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Email Cliente:</label>
+                            <div class="col-lg-9">
+                                <input type="email" name="email_cliente" class="form-control" value="@i.email_cliente" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-9 control-label">Tel. Cliente:</label>
+                            <div class="col-lg-9">
+                                <input type="tel" name="telefono_cliente" class="form-control" value="@i.telefono_cliente" />
+                            </div>
+                        </div>
+                    </div>
+                    <!--Perfil-->
+                    <div class="form-group col-lg-4">
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Perfil</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Perfil Solicitado:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="perfil_solicitante" class="form-control" value="@i.perfil_solicitante" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Carrera Solicitante:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="carrera_solicitante" class="form-control" value="@i.carrera_solicitante" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Nivel Estudios:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="nivel_estudios" class="form-control" value="@i.nivel_estudios" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Años Experiencia:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="tiempo_experiencia" class="form-control" value="@i.tiempo_experiencia" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-9 control-label">Cantidad de Recursos:</label>
+                            <div class="col-lg-9">
+                                <input type="number" name="catidad_recursos" class="form-control" value="@i.catidad_recursos" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Áreas Carreras:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="areas_carreras" class="form-control" value="@i.areas_carreras" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Certificaciones:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="certificaciones" class="form-control" value="@i.certificaciones" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-9 control-label">Prioridad Requerimiento:</label>
+                            <div class="col-lg-9">
+                                <select class="form-control" id="prioridad_requerimiento" name="prioridad_requerimiento">
+                                    <option value="@i.prioridad_requerimiento">@i.prioridad_requerimiento</option>
+                                    <option value="Bajo">Bajo</option>
+                                    <option value="Medio">Medio</option>
+                                    <option value="Alto">Alto</option>
+                                </select>
+                                <!--<label class="form-control control-label disabled" name="prioridad_requerimiento">i.prioridad_requerimiento</label>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--Fecha Req.-->
+                    <div class="form-group col-lg-4">
+                        <div class="form-group">
+                            <label class="col-lg-8 control-label">Fechas Requerimientos</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Fecha Solicitud:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="fecha_sol_req" class="form-control" value="@i.fecha_sol_req"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Fecha Envio:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="fecha_env_sol" class="form-control"  value="@i.fecha_env_sol" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Fecha Cierre:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="fecha_cierre_req" class="form-control" value="@i.fecha_cierre_req" />
+                            </div>
+                        </div>
+                        <hr />
+                        <!--General-->
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">General</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Rango de Edad:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="rango_edad" class="form-control" value="@i.rango_edad" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Genero:</label>
+                            <div class="col-lg-9">
+                                <select class="form-control" id="genero" name="genero">
+                                    <option value="@i.genero">@i.genero</option>
+                                    <option value="Indistinto">Indistinto</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                </select>
+                                <!--<label class="form-control control-label disabled" name="genero">i.genero</label>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Idiomas:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="idiomas" class="form-control" value="@i.idiomas" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!--Economia-->
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="col-lg-offset-2 control-label">Economia</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Rango de Tarifa:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="rango_tarifa" class="form-control" value="@i.rango_tarifa" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Rango de Sueldo:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="rango_sueldo" class="form-control" value="@i.rango_sueldo" />
+                            </div>
+                        </div>
+                    </div>
+                    <!--Adicionales-->
+                    <div class="col-lg-4">
+                        <div>
+                            <div class="form-group">
+                                <label class="control-label">Adicionales</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="adicionales" name="adicionales" class="form-control" rows="6" value="@i.adicionales">@i.adicionales</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Publicacion-->
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Publicacion</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Compu Trabajo:</label>
+                            <div class="col-lg-9">
+                                <select class="form-control" id="compu_trabajo" name="compu_trabajo">
+                                    <option value="@i.compu_trabajo">@i.compu_trabajo</option>
+                                    <option value="NO">NO</option>
+                                    <option value="SI">SI</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-12 control-label">Fecha Publicacion Compu Trabajo:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="compu_trabajo_fecha" class="form-control" value="@i.compu_trabajo_fecha" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Redes Socilaes:</label>
+                            <div class="col-lg-9">
+                                <select class="form-control" id="redes_sociales" name="redes_sociales">
+                                    <option value="@i.redes_sociales">@i.redes_sociales</option>
+                                    <option value="NO">NO</option>
+                                    <option value="SI">SI</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-12 control-label">Fecha Publicacion Redes Sociales:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="redes_sociales_fecha" class="form-control" value="@i.redes_sociales_fecha"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-6 control-label">Pagina WEB:</label>
+                            <div class="col-lg-9">
+                                <select class="form-control" id="pagina_web" name="pagina_web">
+                                    <option value="@i.pagina_web">@i.pagina_web</option>
+                                    <option value="NO">NO</option>
+                                    <option value="SI">SI</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-12 control-label">Fecha Publicacion Pagina Web:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="pagina_web_fecha" class="form-control" value="@i.pagina_web_fecha"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-9 control-label">OCC Mundial:</label>
+                            <div class="col-lg-9">
+                                <select class="form-control" id="occ_mundial" name="occ_mundial">
+                                    <option value="@i.occ_mundial">@i.occ_mundial</option>
+                                    <option value="NO">NO</option>
+                                    <option value="SI">SI</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-12 control-label">Fecha Publicacion OCC Mundial:</label>
+                            <div class="col-lg-9">
+                                <input type="text" name="occ_mundial_fecha" class="form-control" value="@i.occ_mundial_fecha"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary form-control">Actualizar</button>
+                <a href="~/Home/Index" class="btn btn-danger form-control"><ins>Cancelar</ins></a>
+            </form>
+        }
